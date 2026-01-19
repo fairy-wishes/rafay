@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd6e0 25%, #e8d5f2 50%, #ffc8dd 75%, #fff0f6 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Floating hearts background */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff006e;
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.5), 0 0 40px rgba(255, 0, 110, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 0, 110, 0.5), 0 0 40px rgba(255, 0, 110, 0.3);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 0, 110, 0.8), 0 0 60px rgba(255, 0, 110, 0.5);
+            }
+        }
+
+        .hero p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #8b4789;
+            font-style: italic;
+        }
+
+        /* Images Section */
+        .images-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-box {
+            position: relative;
+            opacity: 0;
+        }
+
+        .image-box.fade-in-left {
+            animation: fadeInLeft 1s forwards;
+        }
+
+        .image-box.fade-in-right {
+            animation: fadeInRight 1s forwards;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px;
+            padding-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: rotate(-3deg);
+            transition: all 0.4s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 0, 110, 0.6);
+        }
+
+        .polaroid img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #ff006e;
+        }
+
+        .heart-frame {
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            transition: all 0.4s ease;
+        }
+
+        .heart-frame:hover {
+            animation: bounce 0.6s ease;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 1);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .heart-frame img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .heart-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #ff006e;
+        }
+
+        /* Message Section */
+        .message-section {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 8px 32px rgba(255, 0, 110, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .message-section p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #6b2c6b;
+            text-align: center;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #ff006e;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Surprise Button */
+        .surprise-btn {
+            display: block;
+            margin: 50px auto;
+            padding: 20px 50px;
+            font-size: 1.4rem;
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            background: linear-gradient(135deg, #ff006e, #ff4d94);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.6);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, #fff0f6, #ffd6e0);
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 30px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff006e;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #6b2c6b;
+            line-height: 1.8;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff006e;
+            cursor: pointer;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff006e;
+            position: absolute;
+            animation: confettiFall 3s linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        footer p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #8b4789;
+            margin-bottom: 10px;
+        }
+
+        footer .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ff006e;
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .images-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .polaroid img,
+            .heart-frame img {
+                width: 250px;
+                height: 330px;
+            }
+
+            .message-section {
+                padding: 30px 20px;
+            }
+
+            .message-section p {
+                font-size: 1.1rem;
+            }
+
+            .surprise-btn {
+                font-size: 1.2rem;
+                padding: 15px 40px;
+            }
+
+            .modal-content {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Happy Birthday, My Love 🎉❤️</h1>
+        <p>You make my world brighter every single day.</p>
+    </section>
+
+    <!-- Images Section -->
+    <section class="images-container">
+        <!-- Image Container 1 - Polaroid -->
+        <div class="image-box fade-in-left">
+            <div class="polaroid">
+                <!-- Replace with your image URL or local path -->
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=600&fit=crop" alt="Our First Moment">
+                <div class="polaroid-caption">Our first unforgettable moment 💫</div>
+            </div>
+        </div>
+
+        <!-- Image Container 2 - Heart Frame -->
+        <div class="image-box fade-in-right">
+            <div class="heart-frame">
+                <!-- Replace with your image URL or local path -->
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&h=600&fit=crop" alt="Magic Moment">
+            </div>
+            <div class="heart-caption">Every moment with you is magic ✨</div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section class="message-section">
+        <p id="typingMessage"></p>
+    </section>
+
+    <!-- Surprise Button -->
+    <button class="surprise-btn" id="surpriseBtn">Click for a Surprise 💝</button>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>A Special Note Just for You 💌</h2>
+            <p>You are the sunshine in my mornings, the stars in my nights, and the beat in my heart. Thank you for being you, for loving me, and for making every day an adventure. Here's to many more birthdays together, creating beautiful memories. I love you more than words can ever express. Happy Birthday, my everything! 🎂✨💕</p>
+        </div>
+    </div>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle">🎵</button>
+
+    <!-- Background Music (Optional - Add your own music file) -->
+    <audio id="bgMusic" loop>
+        <!-- Replace with your music file path -->
+        <!-- <source src="your-music-file.mp3" type="audio/mpeg"> -->
+    </audio>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ just for you</p>
+        <p class="signature">— From Someone</p>
+    </footer>
+
+    <script>
+        // Floating Hearts Generation
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartSymbols = ['💕', '💖', '💗', '💝', '💓', '✨', '⭐'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 600);
+        }
+
+        createFloatingHearts();
+
+        // Typing Animation
+        const message = "To the one who fills my life with laughter, warmth, and endless love. Every smile of yours is my favorite memory. May this year bring you all the happiness you deserve.";
+        const typingElement = document.getElementById('typingMessage');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < message.length) {
+                typingElement.textContent += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                // Remove cursor after typing is done
+                setTimeout(() => {
+                    typingElement.innerHTML = message;
+                }, 500);
+            }
+        }
+
+        setTimeout(typeWriter, 1000);
+
+        // Surprise Button - Confetti and Modal
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+
+        function createConfetti() {
+            const colors = ['#ff006e', '#ffd700', '#ff4d94', '#ffed4e', '#e0aaff', '#c77dff'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 30);
+            }
+        }
+
+        surpriseBtn.addEventListener('click', () => {
+            createConfetti();
+            modal.style.display = 'block';
+            // Optionally start background music
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic.src) {
+                bgMusic.play();
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Music Toggle
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.src) {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicToggle.textContent = '🎵';
+                } else {
+                    bgMusic.play();
+                    musicToggle.textContent = '🔇';
+                }
+                isPlaying = !isPlaying;
+            }
+        });
+
+        // Parallax Scrolling Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
